@@ -339,34 +339,48 @@ namespace LINQDemo
             //    Console.WriteLine(elemento.Nombre);
             //}
 
+            //Console.WriteLine();
+            //var parteFinal = (from e in estudiantes orderby e.EstudianteID descending select e).Skip(1).Take(2).OrderBy(x=>x.EstudianteID);
+            //foreach ( var elemento in parteFinal)
+            //{
+            //    Console.WriteLine(elemento.Nombre);
+
+            //}
+
+            //var parteFinal2 = estudiantes.Skip(estudiantes.Count()-3).SkipLast(1);
+            //foreach (var elemento in parteFinal)
+            //{
+            //    Console.WriteLine(elemento.Nombre);
+            //}
+
+
+            //var respuesta = estudiantes.Any(x => x.Nombre.StartsWith("H"));
+            //Console.WriteLine(respuesta);
+
+            //var respuesta2 = estudiantes.All(x => x.Apellido!="");
+
+
+            //var primero = estudiantes.FirstOrDefault(x => x.Universidad == "Politecnico di Milano");
+            //if (primero!=null)
+            //{ 
+            //Console.WriteLine($"{primero.Nombre} {primero.Apellido}");
+            //}
+            //var ultimo = estudiantes.Last();
+
+            var estudiantesNombre = (from e in estudiantes select e.Nombre).ToList();
+            foreach (var e in estudiantesNombre)
+            {
+                Console.WriteLine(e);
+            }
+
             Console.WriteLine();
-            var parteFinal = (from e in estudiantes orderby e.EstudianteID descending select e).Skip(1).Take(2).OrderBy(x=>x.EstudianteID);
-            foreach ( var elemento in parteFinal)
+
+            estudiantes[0] = new Estudiante { Nombre = "Fabio", Apellido = "Paratici", 
+                Universidad = "Bocconi di Milano", EstudianteID= 11};
+            foreach (var e in estudiantesNombre)
             {
-                Console.WriteLine(elemento.Nombre);
-
+                Console.WriteLine(e);
             }
-
-            var parteFinal2 = estudiantes.Skip(estudiantes.Count()-3).SkipLast(1);
-            foreach (var elemento in parteFinal)
-            {
-                Console.WriteLine(elemento.Nombre);
-            }
-
-
-            var respuesta = estudiantes.Any(x => x.Nombre.StartsWith("H"));
-            Console.WriteLine(respuesta);
-
-            var respuesta2 = estudiantes.All(x => x.Apellido!="");
-
-
-            var primero = estudiantes.FirstOrDefault(x => x.Universidad == "Politecnico di Milano");
-            if (primero!=null)
-            { 
-            Console.WriteLine($"{primero.Nombre} {primero.Apellido}");
-            }
-            var ultimo = estudiantes.Last();
-
 
 
             Console.ReadLine();
